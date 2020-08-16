@@ -4,26 +4,29 @@ import java.util.Arrays;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class AnnotationDemoApp {
+public class AnnotationBeanScopeDemoApp {
 
 	public static void main(String[] args) {
 
-		// Load the Spring Configuration File
+		// Load the Configuration File
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
 		Arrays.asList(context.getBeanDefinitionNames()).forEach(System.out::println);
 
-		// Retrieve the bean from Spring Container
+		// Retrieve Bean from Container
 		Coach theCoach = context.getBean("volleyBallCoach", Coach.class);
 
-		// Coach theCoach = context.getBean("footballCoach", Coach.class);
+		Coach alphaCoach = context.getBean("volleyBallCoach", Coach.class);
 
-		// Coach theCoach = context.getBean("tennisCoach", Coach.class);
+		// Check if they are Same
+		boolean result = (theCoach == alphaCoach);
 
-		// Call the method on the bean
-		System.out.println(theCoach.getDailyWorkout());
+		// Print out the Result
+		System.out.println("\nPointing to a Same Object: " + result);
 
-		System.out.println(theCoach.getDailyFortune());
+		System.out.println("Memory Location of theCoach: " + theCoach);
+
+		System.out.println("Memory Location of alphaCoach: " + alphaCoach + "\n");
 
 		// Close the context
 		context.close();

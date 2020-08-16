@@ -2,14 +2,14 @@ package com.pankaj.SpringDemo;
 
 import java.util.Arrays;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AnnotationDemoApp {
+public class JavaConfigDemoApp {
 
 	public static void main(String[] args) {
 
-		// Load the Spring Configuration File
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// Load the Spring Configuration Java Class
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SportConfig.class);
 
 		Arrays.asList(context.getBeanDefinitionNames()).forEach(System.out::println);
 

@@ -21,6 +21,8 @@
 	<context:component-scan
 		base-package="com.pankaj.SpringDemo "></context:component-scan>
 	
+	<!-- Injecting properties file -->
+	<context:property-placeholder location="classpath:sport.properties"/>  
 
 </beans>
 
